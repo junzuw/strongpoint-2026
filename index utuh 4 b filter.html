@@ -1,0 +1,2329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Progres Program Prioritas Triwulan II 2026</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); 
+            color: #1e293b; line-height: 1.5; padding-bottom: 0; font-size: 17.5px; 
+        }
+        .container {
+            width: 100%; max-width: 650px; margin: 0 auto;
+            background-color: #f8fafc; min-height: 100vh; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            display: flex; flex-direction: column;
+        }
+        
+        header {
+            position: -webkit-sticky; 
+            position: sticky;
+            top: 0;
+            z-index: 1000; 
+            background: linear-gradient(135deg, #0740aa 0%, #1d4ed8 100%); 
+            color: #ffffff; 
+            padding: 12px 20px; 
+            border-bottom-left-radius: 24px; border-bottom-right-radius: 24px;
+            box-shadow: 0 10px 20px rgba(7, 64, 170, 0.2);
+        }
+        .header-wrap { display: table; width: 100%; }
+        .header-logo-cell { display: table-cell; vertical-align: middle; width: 55px; } 
+        .header-logo {
+            width: 85px; 
+            height: 85px; 
+            background: rgba(255, 255, 255, 0.15); 
+            border: 1.5px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 20px;
+            display: block; 
+            object-fit: contain; 
+            padding: 4px; 
+            backdrop-filter: blur(5px);
+        }
+        .header-text-cell { display: table-cell; vertical-align: middle; padding-left: 12px; }
+        header h1 { font-size: 20px; font-weight: 800; margin-bottom: 2px; line-height: 1.2; letter-spacing: -0.3px; } 
+        header p { font-size: 11px; opacity: 0.9; font-weight: 400; }
+        
+        .search-container { padding: 24px 20px 12px 20px; }
+        .search-flex { display: flex; gap: 10px; align-items: center; }
+        
+        .btn-filter-toggle {
+            background-color: #ffffff; border: 2px solid #e2e8f0;
+            border-radius: 14px; height: 54px; width: 54px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            flex-shrink: 0;
+        }
+        .btn-filter-toggle:hover, .btn-filter-toggle.active { 
+            border-color: #0740aa; background-color: #eff6ff; 
+        }
+        
+        .search-input {
+            flex: 1; padding: 15px 20px; border: 2px solid #e2e8f0;
+            border-radius: 14px; font-size: 16px; font-family: inherit;
+            outline: none; transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: 54px;
+        }
+        .search-input:focus { border-color: #0740aa; box-shadow: 0 0 0 4px rgba(7, 64, 170, 0.15); }
+
+        .filter-panel {
+            display: none; background-color: #ffffff; border: 1px solid #e2e8f0;
+            border-radius: 14px; padding: 16px; margin-top: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .filter-grid { display: flex; gap: 12px; flex-wrap: wrap; }
+        .filter-group { flex: 1; min-width: 140px; }
+        .filter-group label { display: block; font-size: 12px; font-weight: 700; color: #64748b; margin-bottom: 6px; text-transform: uppercase; }
+        .filter-select {
+            width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px;
+            font-size: 14px; font-family: inherit; outline: none; color: #1e293b; background-color: #f8fafc;
+        }
+        .filter-select:focus { border-color: #0740aa; }
+
+        main { padding: 10px 20px 20px 20px; flex: 1; }
+        .opd-card {
+            background-color: #ffffff; border-radius: 18px; padding: 10px;
+            margin-bottom: 20px; border: 1px solid #0740aa;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .opd-card:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .opd-main-info { display: table; width: 100%; }
+        .opd-logo-cell { display: table-cell; vertical-align: middle; width: 70px; }
+        .opd-logo {
+            width: 70px;  
+            height: 70px; 
+            border-radius: 16px; 
+            display: block; 
+            border: 1px solid #bfdbfe;
+            object-fit: contain; 
+            background-color: #ffffff; 
+        }
+        .opd-details-cell { display: table-cell; vertical-align: middle; padding-left: 7px; }
+        .opd-title { font-size: 17.5px; font-weight: 700; color: #0f172a; margin-bottom: 1px; line-height: 1; }
+        .opd-meta { font-size: 13.5px; color: #64748b; line-height: 1.6; }
+        .opd-meta span { font-weight: 600; color: #334155; }
+        .pagu-total { color: #0740aa !important; font-weight: 700 !important; font-size: 14.5px; }
+        
+        .opd-action-cell { display: table-cell; vertical-align: middle; text-align: right; width: 75px; }
+        
+        .btn {
+            font-family: inherit; font-size: 12px; font-weight: 600; padding: 8px 12px;
+            border: none; border-radius: 8px; cursor: pointer; display: inline-block;
+            transition: all 0.2s ease; line-height: 1.2;
+        }
+        .btn-primary { background-color: #0740aa; color: #ffffff; }
+        .btn-primary:hover { background-color: #1d4ed8; }
+        .btn-success { background-color: #10b981; color: #ffffff; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
+        .btn-success:hover { background-color: #059669; }
+        .btn-orange { background-color: #f97316; color: #ffffff; }
+        .btn-orange:hover { background-color: #ea580c; }
+
+        .kegiatan-container { display: none; margin-top: 20px; padding-top: 20px; border-top: 2px dashed #e2e8f0; }
+        .kegiatan-card { 
+            background-color: #f8fafc; border: 1px solid #5d0ddd; 
+            border-radius: 14px; padding: 16px; margin-bottom: 12px;
+        }
+        .kegiatan-card:last-child { margin-bottom: 0; }
+        .kegiatan-main-info { display: table; width: 100%; }
+        .kegiatan-text-cell { display: table-cell; vertical-align: middle; }
+        .kegiatan-title { font-size: 15.5px; font-weight: 700; color: #1e293b; margin-bottom: 5px; line-height: 1.4; }
+        .kegiatan-pagu { font-size: 13.5px; color: #64748b; font-weight: 500; }
+        .kegiatan-action-cell { display: table-cell; vertical-align: middle; text-align: right; width: 70px; }
+        
+        .kegiatan-sub-detail { display: none; margin-top: 14px; padding-top: 14px; border-top: 1px solid #e2e8f0; font-size: 13.5px; }
+        .detail-row { display: table; width: 100%; margin-bottom: 8px; }
+        .detail-row:last-child { margin-bottom: 0; }
+        .detail-label { display: table-cell; width: 45%; color: #64748b; font-weight: 500; padding: 2px 0; }
+        .detail-value { display: table-cell; width: 55%; color: #0f172a; font-weight: 600; text-align: right; padding: 2px 0; }
+        .status-badge { background-color: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+        
+        footer {
+            background: linear-gradient(135deg, #0740aa 0%, #1d4ed8 100%); 
+            color: rgba(255, 255, 255, 0.8); 
+            font-size: 12px;
+            font-weight: 500;
+            text-align: center;
+            padding: 15px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.4;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-wrap">
+            <div class="header-logo-cell">
+                <img class="header-logo" src="logo.png" alt="Logo Utama">
+            </div>
+            <div class="header-text-cell">
+                <h1>Progres Strong Point<br> 
+                Mitra Bidang Infraswil  Triwulan II 2026</h1>
+                <p>Sistem Monitoring & Evaluasi Capaian Kinerja</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-flex">
+            <button class="btn-filter-toggle" id="filterToggleBtn" onclick="toggleFilterPanel()" title="Saring Pilihan">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0740aa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            </button>
+            <input type="text" id="searchInput" class="search-input" placeholder="Cari nama kegiatan..." onkeyup="jalankanMultiFilter()">
+        </div>
+        
+        <div class="filter-panel" id="filterPanel">
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label>Metode Pengadaan</label>
+                    <select id="filterMetode" class="filter-select" onchange="jalankanMultiFilter()">
+                        <option value="">Semua Metode</option>
+                        <option value="Swakelola">Swakelola</option>
+                        <option value="Swakelola Type 2">Swakelola Tipe 2</option>
+                        <option value="E-Purchasing">E-Purchasing</option>
+                        <option value="Tender">Tender</option>
+                        <option value="Seleksi">Seleksi</option>
+                        <option value="RO">RO (Repeat Order)</option>
+                        <option value="Pengadaan Langsung">Pengadaan Langsung</option>
+                        <option value="Hibah">Hibah</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Jenis Kontrak</label>
+                    <!-- ======================================================= -->
+                    <!-- PERUBAHAN: OPSI JENIS KONTRAK DISET SESUAI DAFTAR BARU -->
+                    <!-- ======================================================= -->
+                    <select id="filterKontrak" class="filter-select" onchange="jalankanMultiFilter()">
+                        <option value="">Semua Kontrak</option>
+                        <option value="Lumpsum">Lumpsum</option>
+                        <option value="Harga Satuan">Harga Satuan</option>
+                        <option value="Waktu Penugasan">Waktu Penugasan</option>
+                        <option value="Gabungan Harga satuan & Lumpsump">Gabungan Harga Satuan & Lumpsum</option>
+                        <option value="termin & lumpsump">Termin & Lumpsum</option>
+                        <option value="Hibah">Hibah</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main id="mainContent">
+    </main>
+    
+    <footer>
+        Strong Point Progress by @binfraswil Copyright 2026
+    </footer>
+</div>
+
+<script>
+    const proyekData = [
+  {
+    "opd": "BAPPELITBANGDA",
+    "kegiatan": "Uji Coba dan Penerapan Inovasi",
+    "anggaran": "Rp 1.000.000.000",
+    "durasi": "-",
+    "metode": "Swakelola",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Proses Pergeseran Anggaran dan Permitaan Penambahan Anggaran Kas",
+    "fisik": "Sebelumnya terdiri dari beberapa rekening belanja diminta untuk dipaketkan karena akan di swakelolakan",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BAPPELITBANGDA",
+    "kegiatan": "Uji Coba dan Penerapan Inovasi",
+    "anggaran": "Rp 500.000.000",
+    "durasi": "-",
+    "metode": "Swakelola",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Proses Pergeseran Anggaran dan Permitaan Penambahan Anggaran Kas",
+    "fisik": "Sebelumnya terdiri dari beberapa rekening belanja diminta untuk dipaketkan karena akan di swakelolakan",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BAPPELITBANGDA",
+    "kegiatan": "Uji Coba dan Penerapan Inovasi",
+    "anggaran": "Rp 500.000.000",
+    "durasi": "-",
+    "metode": "Swakelola",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Proses Pergeseran Anggaran dan Permitaan Penambahan Anggaran Kas",
+    "fisik": "Sebelumnya terdiri dari beberapa rekening belanja diminta untuk dipaketkan karena akan di swakelolakan",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BPBD",
+    "kegiatan": "Penyediaan Logistik Penyelamatan dan Evakuasi Korban Bencana",
+    "anggaran": "Rp 1.769.832.600",
+    "durasi": "Kontrak Payung",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BPBD",
+    "kegiatan": "Penyediaan Peralatan Kebencanaan",
+    "anggaran": "Rp 215.876.700",
+    "durasi": "3 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Kawasan CPI di Makassar",
+    "anggaran": "Rp 232.171.800.000",
+    "durasi": "8-9 Bulan",
+    "metode": "Tender",
+    "kontrak": "Lumpsump dan Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pengawasan Pembangunan Kawasan CPI Makassar",
+    "anggaran": "Rp 7.293.854.000",
+    "durasi": "8 Bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "AMDAL Pembangunan Kawasan CPI di Kota Makassar",
+    "anggaran": "Rp 1.200.000.000",
+    "durasi": "4 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penyusunan Desain Interior Saoraja",
+    "anggaran": "Rp 499.837.500",
+    "durasi": "2 Bulan",
+    "metode": "RO",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penyusunan Redesign Masjid Kubah 99 Kota Makassar",
+    "anggaran": "Rp 995.527.500",
+    "durasi": "-",
+    "metode": "Swakelola Type II",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Masjid Kawasan Olah Raga Sudiang di Makassar",
+    "anggaran": "Rp 105.399.000.000",
+    "durasi": "8 Bulan",
+    "metode": "Tender",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Manajemen Konstruksi Pembangunan Masjid Kawasan Olah Raga Sudiang Makassar",
+    "anggaran": "Rp 3.000.000.000",
+    "durasi": "10 Bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "AMDAL Kawasan Olah Raga Sudiang di Kota Makassar",
+    "anggaran": "Rp 1.200.000.000",
+    "durasi": "4 Bulan",
+    "metode": "Seleksi",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Rehabilitasi Gedung CCC di Kota Makassar",
+    "anggaran": "Rp 38.999.100.000",
+    "durasi": "8 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Rehabilitasi Gedung CCC Makassar",
+    "anggaran": "Rp 999.742.800",
+    "durasi": "9 Bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Rehabilitasi Gedung PKK",
+    "anggaran": "Rp 3.300.150.000",
+    "durasi": "4 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Rehabilitasi Gedung PKK",
+    "anggaran": "Rp 197.382.000",
+    "durasi": "4 Bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penyusunan DED Rehabilitasi Gedung PKK",
+    "anggaran": "Rp 102.825.000",
+    "durasi": "1,5 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penimbunan dan Pemadatan Tanah Untia Kota Makassar",
+    "anggaran": "Rp 8.220.521.610",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Penimbunan dan Pemadatan Tanah Untia Kota Makassar",
+    "anggaran": "Rp 250.842.000",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "AMDAL Reklamasi Untia di Kota Makassar",
+    "anggaran": "Rp 1.401.392.100",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penyusunan DED Reklamasi Untia Kota Makassar",
+    "anggaran": "Rp 2.000.000.000",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Penyusunan DED Pembangunan Masjid Panampu Kota Makassar",
+    "anggaran": "Rp 232.276.000",
+    "durasi": "-",
+    "metode": "Seleksi",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Masjid Pannampu Kota Makassar",
+    "anggaran": "Rp 5.461.050.000",
+    "durasi": "8 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Pembangunan Masjid Pannampu Kota Makassar",
+    "anggaran": "Rp 268.730.500",
+    "durasi": "-",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Andalalin Jalan Inspeksi Sungai Tallo Kota Makassar",
+    "anggaran": "Rp 150.104.167",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Perencanaan Pembangunan Tanggul Sungai Tello di Kota Makassar Lanjutan",
+    "anggaran": "Rp 196.787.500",
+    "durasi": "1 bulan",
+    "metode": "pengadaan langsung",
+    "kontrak": "lumpsum",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Tanggul Sungai Tello di Kota Makassar Lanjutan",
+    "anggaran": "Rp 10.591.341.487",
+    "durasi": "5 bulan",
+    "metode": "tender",
+    "kontrak": "harga satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Pembangunan Tanggul Sungai Tallo Lanjutan",
+    "anggaran": "Rp 299.832.000",
+    "durasi": "5 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Masjid Bone",
+    "anggaran": "Rp 28.606.200.000",
+    "durasi": "8 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Pembangunan Masjid Bone",
+    "anggaran": "Rp 862.156.800",
+    "durasi": "7 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Normalisasi Sungai Sulawesi Selatan",
+    "anggaran": "Rp 14.499.357.000",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Normalisasi Sungai Sulawesi Selatan",
+    "anggaran": "Rp 501.146.500",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Pembangunan Embung",
+    "anggaran": "Rp 9.310.525.000",
+    "durasi": "5 bulan",
+    "metode": "tender",
+    "kontrak": "harga satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "Supervisi Pembangunan Embung",
+    "anggaran": "Rp 386.322.000",
+    "durasi": "5 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "UKL - UPL Pembangunan Embung",
+    "anggaran": "Rp 201.036.000",
+    "durasi": "2 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "SDA & CKTR",
+    "kegiatan": "MYC PAKET 1-4",
+    "anggaran": "Rp 380.567.885.453",
+    "durasi": "2 Tahun",
+    "metode": "Tender",
+    "kontrak": "Gabungan Lumpsum dan Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Rekonstruksi/Peningkatan Struktur Jalan Ruas Ussu - Nuha - Bts. Prov. Sulteng (DBH SAWIT)",
+    "anggaran": "Rp 6.341.421.978",
+    "durasi": "4 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pembangunan Jalan Ruas Sabbang - Tallang dan Ruas Tallang - Sae di Kab. Luwu Utara",
+    "anggaran": "Rp 20.000.000.000",
+    "durasi": "6 bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pengawasan Teknis Pembangunan Jalan Ruas Sabbang-Tallang dan Ruas Tallang-Sae di Kab. Luwu Utara",
+    "anggaran": "Rp 724.200.000",
+    "durasi": "6 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pembangunan Jalan Lingkar Unhas",
+    "anggaran": "Rp 7.500.000.000",
+    "durasi": "6 bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pembangunan Jalan Buntu Macca Kab. Enrekang",
+    "anggaran": "Rp 5.000.000.000",
+    "durasi": "-",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Perencanaan Teknis jalan buntu Macca Kab. Enrekang",
+    "anggaran": "Rp 100.000.000",
+    "durasi": "-",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pembangunan Jembatan S. Jampu I Ruas Bts. Kab. Soppeng - Ulugalung di Kab. Wajo",
+    "anggaran": "Rp 5.622.500.000",
+    "durasi": "6 bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Pengawasan Teknis Jembatan S. Jampu I Ruas Bts. Kab. Soppeng - Ulugalung di Kab. Wajo",
+    "anggaran": "Rp 600.000.000",
+    "durasi": "6 bulan",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "Redesain Jembatan Barombong di Kota Makassar",
+    "anggaran": "Rp 980.272.580",
+    "durasi": "-",
+    "metode": "Swakelola Type II",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "MYC PAKET 1- 6",
+    "anggaran": "Rp 1.093.464.881.303",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "BM & BK",
+    "kegiatan": "MYC PAKET 6",
+    "anggaran": "Rp 0",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Studi Kelayakan / FS Pendaratan Seaplane (1 Paket)",
+    "anggaran": "Rp 750.000.000",
+    "durasi": "3 Bulan",
+    "metode": "Swakelola Type 2",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Tenaga Ahli (Biaya Perencanaan Teknis ) (CPI-Makassar )",
+    "anggaran": "Rp 150.000.000",
+    "durasi": "2 Bulan",
+    "metode": "Swakelola Type 2",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Tenaga Ahli (Biaya Perencanaan Teknis ) (Pangkep)",
+    "anggaran": "Rp 150.000.000",
+    "durasi": "2 Bulan",
+    "metode": "Swakelola Type 2",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Tenaga Ahli (Biaya Perencanaan Teknis ) (Bulukumba)",
+    "anggaran": "Rp 150.000.000",
+    "durasi": "2 Bulan",
+    "metode": "Swakelola Type 2",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Konsultansi (Pengawasan) 1 Paket (CPI)",
+    "anggaran": "Rp 52.345.732",
+    "durasi": "3 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Konsultansi (Pengawasan) 1 Paket (Pangkep)",
+    "anggaran": "Rp 52.345.732",
+    "durasi": "3 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Belanja Jasa Konsultansi (Pengawasan) 1 Paket (Bulukumba)",
+    "anggaran": "Rp 52.345.732",
+    "durasi": "3 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Pembuatan Gang Way/Jembatan Penghubung dan Dermaga Seaplane di CPI Makassar",
+    "anggaran": "Rp 3.082.747.500",
+    "durasi": "3 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Pembuatan Gang Way/Jembatan Penghubung dan Dermaga Seaplane di Pangkep",
+    "anggaran": "Rp 2.480.572.500",
+    "durasi": "3 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Pembuatan Gang Way/Jembatan Penghubung dan Dermaga Seaplane di Bulukumba",
+    "anggaran": "Rp 2.480.572.500",
+    "durasi": "2 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Subsidi  Angkutan Umum Trans SulSel",
+    "anggaran": "Rp 40.000.000.000",
+    "durasi": "12 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Penyelenggaraan Angkutan Lebaran ( Mudik Gratis ).",
+    "anggaran": "Rp 225.000.000",
+    "durasi": "1 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Pemasangan Fasilitas Keselamtan Lalu Lintas",
+    "anggaran": "Rp 444.688.000",
+    "durasi": "2 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "DISHUB",
+    "kegiatan": "Pengawasan Pemasangan Faskes",
+    "anggaran": "Rp 25.000.000",
+    "durasi": "2 Bulan",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah By Pass Mamminasata",
+    "anggaran": "Rp 96.112.260.000",
+    "durasi": "11 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Perencanaan Pengadaan Tanah",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Pengumuman pemenang konsultan penyusunan DPPT atas nama CV. Sanggilang Pratama Konsultan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah Runway Bandara Arung Palakka di Kab. Bone",
+    "anggaran": "Rp 30.000.000.000",
+    "durasi": "4 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Pelaksanaan Pengadaan Tanah (Proses verifikasi untuk tahapan pelaksanaan pengadaan tanah oleh BPN)",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tahap Pelaksanaan (Belum ada hasil penilaian)"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah Sekolah Menengah Atas di Kabupaten Bone",
+    "anggaran": "Rp 26.000.000.000",
+    "durasi": "4 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap pelaksanaan pengadaan tanah (kegiatan penilaian ganti kerugian oleh penilai)",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tahap Pelaksanaan (Belum ada hasil penilaian)"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah Runway Bandara Bua di Kab. Luwu",
+    "anggaran": "Rp 22.639.775.060",
+    "durasi": "4 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Pelaksanaan Pengadaan Tanah (Tahap Validasi Oleh BPN untuk dilakukan Pembayaran",
+    "fisik": "0%",
+    "keuangan": "Rp 1.800.562.875",
+    "keterangan": "UGR Lahan dan BPOP"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pembebasan Tanah untuk Kepentingan Umum",
+    "anggaran": "Rp 11.671.910.844,48",
+    "durasi": "11 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat data pendukung",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Belum dapat data pendukung"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah Kejaksaan",
+    "anggaran": "Rp 10.000.000.000",
+    "durasi": "4 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Perencanaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Akan Memasuki Tahap Pengukuran"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah di Kota Makassar",
+    "anggaran": "Rp 1.979.220.000",
+    "durasi": "11 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Perencanaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Proses identifikasi pemilik lahan rencana lokasi pengadaan tanah"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengadaan Tanah Saluran Waru-Waru di Kabupaten Bone",
+    "anggaran": "Rp 2.100.000.000",
+    "durasi": "11 Bulan",
+    "metode": "Swakelola",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Tahap Perencanaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih Menunggu DED"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Bantaeng",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Bantaeng",
+    "anggaran": "Rp 24.800.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Bantaeng",
+    "anggaran": "Rp 36.220.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "Tgl Kontrak :  25/5/2026 \r\nNo.Kontrak : 056/35/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "36.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 23/6/2026\r\nNilai Kontrak : 35,520,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Sinjai",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Bone",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Sinjai dan Bone",
+    "anggaran": "Rp 43.360.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Sinjai dan Bone",
+    "anggaran": "Rp 65.048.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "Tanggal Kontrak :  26/5/2026 \r\nNo.Kontrak : 056/47/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "33.33%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 24/6/2026\r\nNilai Kontrak : 63,173,208,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Soppeng",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Soppeng",
+    "anggaran": "Rp 24.800.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Soppeng",
+    "anggaran": "Rp 36.220.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "Tanggal Kontrak :  26/5/2026 \r\nNo.Kontrak : 056/38/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "36.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 23/6/2026\r\nNilai Kontrak : 36,009,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Gowa",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Gowa",
+    "anggaran": "Rp 24.800.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumpsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Gowa",
+    "anggaran": "Rp 36.220.000",
+    "durasi": "30Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  26/5/2026 \r\nNo.Kontrak : 056/41/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "33.33%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 24/6/2026\r\nNilai Kontrak : 36,126,060,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Sidrap",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Pinrang",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Sidrap dan Pinrang",
+    "anggaran": "Rp 43.360.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Sidrap dan Pinrang",
+    "anggaran": "Rp 65.048.000",
+    "durasi": "30Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Sedang dalam tahap proses Pengadaan di SPSE",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tahap Negoisiasi HPS Calon Penyedia dengan PBJ (perpanjangan waktu)"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Enrekang",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Enrekang",
+    "anggaran": "Rp 24.800.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Enrekang",
+    "anggaran": "Rp 36.220.000",
+    "durasi": "30Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  2/6/2026 \r\nNo.Kontrak : 056/50/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "10%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 1/7/2026\r\nNilai Kontrak : 36,065,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Barru",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Pangkep",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Pangkep dan Barru",
+    "anggaran": "Rp 43.360.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Pangkep dan Barru",
+    "anggaran": "Rp 65.048.000",
+    "durasi": "30Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  25/5/2026 \r\nNo.Kontrak : 056/32/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "36.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 23/6/2026\r\nNilai Kontrak : 64,838,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Tidak Layak Huni Kabupaten Luwu",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Luwu",
+    "anggaran": "Rp 24.800.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Luwu",
+    "anggaran": "Rp 36.220.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  19/5/2026 \r\nNo.Kontrak : 056/29/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "56.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 17/6/2026\r\nNilai Kontrak : 35,520,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pembangunan Rumah Baru Layak Huni Kabupaten Bulukumba",
+    "anggaran": "Rp 250.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Bulukumba",
+    "anggaran": "Rp 26.475.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Bulukumba",
+    "anggaran": "Rp 45.275.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  19/5/2026 \r\nNo.Kontrak : 056/23/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "56.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 17/6/2026\r\nNilai Kontrak : 45,162,570,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Kabupaten Luwu Utara",
+    "anggaran": "Rp 330.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Luwu Utara",
+    "anggaran": "Rp 39.760.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Luwu Utara",
+    "anggaran": "Rp 59.073.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  19/5/2026 \r\nNo.Kontrak : 056/26/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "56.67%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 17/6/2026\r\nNilai Kontrak : 58,053,000,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Kabupaten Toraja Utara",
+    "anggaran": "Rp 330.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Toraja Utara",
+    "anggaran": "Rp 39.760.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Toraja Utara",
+    "anggaran": "Rp 59.073.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Sedang dalam tahap proses Pengadaan di SPSE",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Proses Verifikasi Ulang Dokumen Penawaran dari calon Penyedia oleh PBJ (Adanya pergantian Perusahaan)"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Peningkatan Kualitas Rumah Kabupaten Tana Toraja",
+    "anggaran": "Rp 300.000.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Swakelola Tipe 2",
+    "kontrak": "Harga Satuan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Swakelola",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Masih berkoordinasi dengan Barjas dan proses menyusun SK Tim Swakelola"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Kabupaten Tana Toraja",
+    "anggaran": "Rp 30.906.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS untuk Paket Pengawasan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Kabupaten Tana Toraja",
+    "anggaran": "Rp 52.482.000",
+    "durasi": "30 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "Tanggal Kontrak :  26/5/2026 \r\nNo.Kontrak : 056/44/PKP",
+    "status": "Sedang dalam tahap penyusunan dokumen perencanaan oleh Konsultan Perencana",
+    "fisik": "33.33%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 24/6/2026\r\nNilai Kontrak : 52,178,880,-"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Revitalisasi Taman Pakui",
+    "anggaran": "Rp 260.416.000",
+    "durasi": "60 Hari Kalender",
+    "metode": "Seleksi",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "Sedang dalam Proses Pemilihan Penyedia/Seleksi oleh Pokja Pemilihan di SPSE",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tahapan Masa sanggah"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pelaksanaan Konstruksi Revitalisasi Taman Pakui",
+    "anggaran": "Rp 2.577.032.000",
+    "durasi": "180 Hari Kalender",
+    "metode": "Tender/Epurchasing",
+    "kontrak": "Gabungan Harga Satuan dan Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat dilaksanakan  (DED  belum tersedia)",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu Hasil Perencanaan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Revitalisasi Taman Pakui",
+    "anggaran": "Rp 162.522.000",
+    "durasi": "180 Hari Kalender",
+    "metode": "Seleksi",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat dilaksanakan (menyesuaikan waktu fisik), dokumen pemilihan siap",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu Hasil Perencanaan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Rehabilitasi Kantin Taman Pakui",
+    "anggaran": "Rp 13.000.000",
+    "durasi": "15 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "056/11/PSUS, 6 April 2026",
+    "status": "1",
+    "fisik": "100%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu surat permohonan pembayaran 100% dan final repot perencanaan dari penyedia"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pelaksanaan Konstruksi Rehabilitasi Kantin Taman Pakui",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Epurchasing",
+    "kontrak": "Gabungan Harga Satuan dan Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyelesaian KAK & HPS"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Rehabilitasi Kantin Taman Pakui",
+    "anggaran": "Rp 10.000.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan, Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan, Penyusunan KAK & HPS"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Pemeliharaan Rumah Susun Baddoka",
+    "anggaran": "Rp 19.500.000",
+    "durasi": "15 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penandatanganan Kontrak",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penandatanganan Kontrak"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pelaksanaan Konstruksi Pemeliharaan Rumah Susun Baddoka",
+    "anggaran": "Rp 300.000.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Epurchasing",
+    "kontrak": "Gabungan Harga Satuan dan Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat dilaksanakan  (DED  belum tersedia)",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu Hasil Perencanaan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Pemeliharaan Rumah Susun Baddoka",
+    "anggaran": "Rp 15.000.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat dilaksanakan (menyesuaikan waktu fisik), dokumen pemilihan siap",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu Hasil Perencanaan"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Perencanaan Konstruksi Pemeliharaan PSU Air Bersih Rumah Susun \r\nASN Type 24 / 5 Lantai",
+    "anggaran": "Rp 6.500.000",
+    "durasi": "15 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "056/020/PSUS, 19 Mei 2026",
+    "status": "1",
+    "fisik": "100%",
+    "keuangan": "Rp 0",
+    "keterangan": "Menunggu surat permohonan pembayaran 100% dan final repot perencanaan dari penyedia"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pelaksanaan Konstruksi Pemeliharaan PSU Air Bersih Rumah Susun \r\nASN Type 24 / 5 Lantai",
+    "anggaran": "Rp 44.250.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Epurchasing",
+    "kontrak": "Gabungan Harga Satuan dan Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan, Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pelaksanaan Konstruksi Pemeliharaan PSU Air Bersih Rumah Susun \r\nASN Type 36 / 3 Lantai",
+    "anggaran": "Rp 44.250.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Epurchasing",
+    "kontrak": "Gabungan Harga Satuan dan Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS"
+  },
+  {
+    "opd": "PERKIMTAN",
+    "kegiatan": "Pengawasan Konstruksi Pemeliharaan PSU Air Bersih Rumah Susun \r\nASN Type 24 / 5 Lantai",
+    "anggaran": "Rp 5.000.000",
+    "durasi": "90 Hari Kalender",
+    "metode": "Pengadaan Langsung",
+    "kontrak": "Lumsum",
+    "tgl_kontrak": "-",
+    "status": "Belum dapat dilaksanakan (menyesuaikan waktu fisik), dokumen pemilihan siap",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Persiapan Penyusunan KAK & HPS"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- Layanan Internet Dedicated Bandwidth 3000 Mbps",
+    "anggaran": "Rp 1.839.999.996",
+    "durasi": "12 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "46054",
+    "status": "-",
+    "fisik": "100 %",
+    "keuangan": "Rp 613.164.000",
+    "keterangan": "Nilai Kontrak Perbulan Rp. 1.839.492.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- Bandwith Internet Dedicated 2000 Mbps",
+    "anggaran": "Rp 1.500.000.000",
+    "durasi": "12 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "46054",
+    "status": "-",
+    "fisik": "100 %",
+    "keuangan": "Rp 496.392.000",
+    "keterangan": "Nilai Kontrak Perbulan Rp. 1.498.176.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- Tarif Langganan Internet [paket Starlink]",
+    "anggaran": "Rp 30.000.000",
+    "durasi": "3 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "27/1/2026",
+    "status": "Selesai",
+    "fisik": "100 %",
+    "keuangan": "Rp 25.030.500",
+    "keterangan": "Pekerjaan telah selesai dan terbayar"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Jasa Ketersediaan Layanan (Availibility Payment) Infrastruktur Telekomunikasi dan Informatika Berupa : Lisensi IP Publik",
+    "anggaran": "Rp 14.000.000",
+    "durasi": "1 Bulan",
+    "metode": "-",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "46331",
+    "status": "Pekerjaan telah selesai dan persiapan dokumen pencairan",
+    "fisik": "100 %",
+    "keuangan": "Rp 0",
+    "keterangan": "Proses TTD dokumen pencairan. Nlai Kontrak Rp. 14.000.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Lisensi Akun Zoom 1000 Partisipan",
+    "anggaran": "Rp 48.600.000",
+    "durasi": "7 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "27/1/2026",
+    "status": "Selesai",
+    "fisik": "100 %",
+    "keuangan": "Rp 43.200.000",
+    "keterangan": "Pekerjaan telah selesai dan terbayar"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Lisensi Akun Zoom Meeting 500 Partisipan",
+    "anggaran": "Rp 11.671.284",
+    "durasi": "7 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Anggaran Di Sekretariat"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- 1 Tahun Pemeliharaan Jaringan FO",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "1 Tahun",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "28-1-2026",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 31. Desember 2026 dan Nilai Kontrak : Rp. 197.025.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- Pemeliharaan Server",
+    "anggaran": "Rp 30.000.000",
+    "durasi": "1 Tahun",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "23-1-2026",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Tanggal Berakhir Kontrak : 31. Desember 2026 dan  Nilai Kontrak Rp. 29.415.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "- 1 Kegiatan Pengembangan Jaringan FO",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "3 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Belum dilaksanakan pengadaannya",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Alur KAS dibulan 8"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Modal Peralatan Jaringan",
+    "anggaran": "Rp 665.607.500",
+    "durasi": "1 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Penyusunan KAK & HPS dan dokumen pendukung lainnya dan menunggu permintaan SPD"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Alat/Bahan untuk Kegiatan Kantor-Bahan Komputer Berupa :  USB Hub Dan Ethernet Adapter",
+    "anggaran": "Rp 2.125.000",
+    "durasi": "7 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Penyusunan KAK & HPS dan dokumen pendukung lainnya dan menunggu permintaan SPD"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Alat/Bahan untuk Kegiatan Kantor-Alat Listrik Berupa : Kabel Roll Listrik",
+    "anggaran": "Rp 21.840.000",
+    "durasi": "7 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Penyusunan KAK & HPS dan dokumen pendukung lainnya dan menunggu permintaan SPD"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Peralatan dan Mesin-Komputer-Peralatan Komputer-Peralatan Jaringan Berupa Switch Unmanaged",
+    "anggaran": "Rp 2.997.000",
+    "durasi": "7 Hari Kalender",
+    "metode": "E-Purchasing",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "Persiapan Penyusunan Dokumen Pengadaan",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Penyusunan KAK & HPS dan dokumen pendukung lainnya dan menunggu permintaan SPD"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Modal Aset Tidak Berwujud-Software Berupa : Aplikasi SIN",
+    "anggaran": "Rp 200.000.000",
+    "durasi": "3 Bulan",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "21/4/2026",
+    "status": "Pekerjaan telah selesai dan persiapan dokumen pencairan",
+    "fisik": "100 %",
+    "keuangan": "Rp 0",
+    "keterangan": "Proses TTD dokumen pencairan. Nilai Kontrak Rp 198.690.000"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Peralatan Meeting Virtual dan backup data",
+    "anggaran": "Rp 59.250.000",
+    "durasi": "-",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Anggaran Di Sekretariat"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Jasa Tenaga Ahli",
+    "anggaran": "Rp 1.131.167.496",
+    "durasi": "1 Tahun",
+    "metode": "-",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "Telah Berjalan",
+    "fisik": "45.83%",
+    "keuangan": "Rp 467.398.701",
+    "keterangan": "Tenaga sulselprov yang telah berjalan sejak Januari 2026"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Kerja Sama Media Online",
+    "anggaran": "Rp 3.669.400.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Termin dan Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "Telah Berjalan sejak Bulan Januari 2026",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Telah dilaksanakan kerjasama media online sejak januari dan dampai sekarang"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Kerja Sama Media Cetak",
+    "anggaran": "Rp 874.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Kerja Sama Media Nasional",
+    "anggaran": "Rp 2.400.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "Berproses",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Telah dilaksanakan kerjasama media sosial sebanyak 3 kali"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Kerja Sama Media Elektronik",
+    "anggaran": "Rp 290.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "Berproses",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Telah dilaksanakan kerjasama media elektronik untuk siaran tunda 4 kali"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Publikasi Tematik",
+    "anggaran": "Rp 42.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Publikasi Media Sosial",
+    "anggaran": "Rp 400.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Media",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "Berproses",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Sementara berjalan untuk kerjasama medsos 1 kegiatan"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Kerja sama dengan Influencer",
+    "anggaran": "Rp 1.000.000.000",
+    "durasi": "Waktu Kontrak Bervariasi Per Paket Pekerjaan",
+    "metode": "E-Purchasing",
+    "kontrak": "Lumpsump",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Telah dilaksanakan kerjasama sebanyak 1 kali"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Belanja Dana Hibah KPID",
+    "anggaran": "Rp 1.000.000.000",
+    "durasi": "1 Tahun",
+    "metode": "Hibah",
+    "kontrak": "Hibah",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 492.999.900",
+    "keterangan": "Telah dilaksanakan pencairan danah Hibah untuk 2 triwulan"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Pendampingan Pimpinan",
+    "anggaran": "Rp 322.134.800",
+    "durasi": "1 Tahun",
+    "metode": "Swakelola",
+    "kontrak": "Waktu Penugasan",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "Berproses sesuai dengan pelaksanaan dokumentasi pimpinan dan program prioritas"
+  },
+  {
+    "opd": "KOMINFO-SP",
+    "kegiatan": "Brelanja Jasa Tenaga Informasi dan Teknologi (Gaji Komisioner Komisi Informasi Sulsel)",
+    "anggaran": "Rp 528.000.000",
+    "durasi": "12 Bulan",
+    "metode": "-",
+    "kontrak": "-",
+    "tgl_kontrak": "-",
+    "status": "-",
+    "fisik": "0%",
+    "keuangan": "Rp 0",
+    "keterangan": "-"
+  }
+];
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const groupedData = {};
+        proyekData.forEach(item => {
+            const namaOPD = item.opd && item.opd.trim() !== "" ? item.opd.trim() : "LAINNYA";
+            if (!groupedData[namaOPD]) {
+                groupedData[namaOPD] = [];
+            }
+            groupedData[namaOPD].push(item);
+        });
+
+        renderData(groupedData);
+    });
+
+    function hitungTotalPagu(listKegiatan) {
+        let total = 0;
+        listKegiatan.forEach(keg => {
+            if (keg.anggaran) {
+                let angka = parseFloat(keg.anggaran.replace(/[^0-9]/g, ''));
+                if (!isNaN(angka)) {
+                    total += angka;
+                }
+            }
+        });
+        return "Rp " + total.toLocaleString('id-ID');
+    }
+
+    function renderData(groupedData) {
+        const mainContent = document.getElementById('mainContent');
+        mainContent.innerHTML = '';
+
+        Object.keys(groupedData).forEach((namaOPD, index) => {
+            const listKegiatan = groupedData[namaOPD];
+            const idOPD = 'opd-' + index;
+            const inisial = namaOPD.substring(0, 3).toUpperCase();
+            const totalPaguOPD = hitungTotalPagu(listKegiatan);
+            
+            let opdCard = document.createElement('div');
+            opdCard.className = 'opd-card';
+
+            let kegiatanHtml = '';
+            listKegiatan.forEach(keg => {
+                kegiatanHtml += `
+                    <div class="kegiatan-card" 
+                         data-nama="${keg.kegiatan.toLowerCase()}" 
+                         data-metode="${(keg.metode || '').toLowerCase()}" 
+                         data-kontrak="${(keg.kontrak || '').toLowerCase()}">
+                        <div class="kegiatan-main-info">
+                            <div class="kegiatan-text-cell">
+                                <div class="kegiatan-title">${keg.kegiatan}</div>
+                                <div class="kegiatan-pagu">Anggaran: ${keg.anggaran}</div>
+                            </div>
+                            <div class="kegiatan-action-cell">
+                                <button class="btn btn-orange" onclick="toggleSubDetail(this)">Detail</button>
+                            </div>
+                        </div>
+                        <div class="kegiatan-sub-detail">
+                            <div class="detail-row"><div class="detail-label">Durasi Kerja</div><div class="detail-value">${keg.durasi || '-'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Metode Pengadaan</div><div class="detail-value">${keg.metode || '-'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Jenis Kontrak</div><div class="detail-value">${keg.kontrak || '-'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Tgl Berkontrak</div><div class="detail-value">${keg.tgl_kontrak || '-'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Status</div><div class="detail-value"><span class="status-badge">${keg.status || '-'}</span></div></div>
+                            <div class="detail-row"><div class="detail-label">Fisik</div><div class="detail-value">${keg.fisik || '0%'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Keuangan</div><div class="detail-value">${keg.keuangan || 'Rp 0'}</div></div>
+                            <div class="detail-row"><div class="detail-label">Keterangan</div><div class="detail-value">${keg.keterangan || '-'}</div></div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            opdCard.innerHTML = `
+                <div class="opd-main-info">
+                    <div class="opd-logo-cell">
+                        <img class="opd-logo" src="${namaOPD}.png" alt="Logo ${namaOPD}" onerror="this.onerror=null; this.src='https://placehold.co/70x70?text=${inisial}';">
+                    </div>
+                    <div class="opd-details-cell">
+                        <div class="opd-title">${namaOPD}</div>
+                        <div class="opd-meta">
+                            Pagu: <span class="pagu-total">${totalPaguOPD}</span><br>
+                            Jumlah: <span>${listKegiatan.length} Kegiatan</span>
+                        </div>
+                    </div>
+                    <div class="opd-action-cell">
+                        <button class="btn btn-primary" onclick="toggleOPD(this, 'list-${idOPD}')">Detail</button>
+                    </div>
+                </div>
+                <div id="list-${idOPD}" class="kegiatan-container">
+                    ${kegiatanHtml}
+                </div>
+            `;
+            mainContent.appendChild(opdCard);
+        });
+    }
+
+    function toggleOPD(button, containerId) {
+        var container = document.getElementById(containerId);
+        if (container.style.display === "block") {
+            container.style.display = "none";
+            button.textContent = "Detail";
+            button.className = "btn btn-primary";
+        } else {
+            container.style.display = "block";
+            button.textContent = "Tutup";
+            button.className = "btn btn-success";
+        }
+    }
+
+    function toggleSubDetail(button) {
+        var kegiatanCard = button.closest('.kegiatan-card');
+        var subDetail = kegiatanCard.querySelector('.kegiatan-sub-detail');
+        if (subDetail.style.display === "block") {
+            subDetail.style.display = "none";
+            button.textContent = "Detail";
+            button.className = "btn btn-orange";
+        } else {
+            subDetail.style.display = "block";
+            button.textContent = "Tutup";
+            button.className = "btn btn-success";
+        }
+    }
+
+    function toggleFilterPanel() {
+        var panel = document.getElementById('filterPanel');
+        var btn = document.getElementById('filterToggleBtn');
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+            btn.classList.remove('active');
+        } else {
+            panel.style.display = "block";
+            btn.classList.add('active');
+        }
+    }
+
+    function jalankanMultiFilter() {
+        let keyword = document.getElementById('searchInput').value.toLowerCase();
+        let fMetode = document.getElementById('filterMetode').value.toLowerCase();
+        let fKontrak = document.getElementById('filterKontrak').value.toLowerCase();
+        
+        let kartuOPD = document.querySelectorAll('.opd-card');
+
+        kartuOPD.forEach(opdCard => {
+            let containerKegiatan = opdCard.querySelector('.kegiatan-container');
+            let tombolOPD = opdCard.querySelector('.opd-action-cell button');
+            let daftarKegiatan = opdCard.querySelectorAll('.kegiatan-card');
+            let adaKegiatanCocok = false;
+
+            daftarKegiatan.forEach(card => {
+                let namaKegiatan = card.getAttribute('data-nama');
+                let metodeKegiatan = card.getAttribute('data-metode');
+                let kontrakKegiatan = card.getAttribute('data-kontrak');
+
+                let cocokKeyword = (keyword === "" || namaKegiatan.includes(keyword));
+                let cocokMetode = (fMetode === "" || metodeKegiatan.includes(fMetode));
+                let cocokKontrak = (fKontrak === "" || kontrakKegiatan.includes(fKontrak));
+
+                if (cocokKeyword && cocokMetode && cocokKontrak) {
+                    card.style.display = "block";
+                    adaKegiatanCocok = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (keyword === "" && fMetode === "" && fKontrak === "") {
+                opdCard.style.display = "block";
+                containerKegiatan.style.display = "none";
+                tombolOPD.textContent = "Detail";
+                tombolOPD.className = "btn btn-primary";
+            } else if (adaKegiatanCocok) {
+                opdCard.style.display = "block";
+                containerKegiatan.style.display = "block";
+                tombolOPD.textContent = "Tutup";
+                tombolOPD.className = "btn btn-success";
+            } else {
+                opdCard.style.display = "none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
